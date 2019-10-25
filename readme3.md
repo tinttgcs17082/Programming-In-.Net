@@ -326,3 +326,23 @@ ng g c top-bar
     </h3>
 </div>
 ```
+
+16. Open `product-list.component.html` and add
+
+```html
+<h2>Products</h2>
+
+<div *ngFor="let product of products">
+
+  <h3>
+    <a [title]="product.name + ' details'">
+      {{ product.name }}
+    </a>
+  </h3>
+
+  <p *ngIf="product.description">
+    Description: {{ product.description }}
+  </p>
+
+</div>
+```
