@@ -18,13 +18,37 @@ ng serve
 
 - Open browser with `http://localhost:4200`
 
-3. Add `product-list` component
+3. Open `index.html` and add
+
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>My First App</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>
+
+```
+
+4. Add `product-list` component
 
 ```
 ng generate component product-list
 ```
 
-4. Open `app.component.html` file
+5. Open `app.component.html` file
 
 - Select all, then delete and add the content
 
@@ -33,7 +57,7 @@ ng generate component product-list
 ```
 - Check the browser
 
-5. Open `product-list.component.ts` and add
+6. Open `product-list.component.ts` and add
 
 ```typescript
 import { Component, OnInit } from '@angular/core';
@@ -72,19 +96,13 @@ export class ProductListComponent implements OnInit {
 
 ```
 
-6. Open `product-list.component.html` and add
+7. Open `product-list.component.html` and add
 
 ```html
 <h2>Products</h2>
-
-<div *ngFor="let product of products">
-    <h3>
-        {{ product.name }}
-    </h3>
-</div>
 ```
 
-7. Config router
+8. Config router
 
 Open `app-routing.module.ts`, add the following code 
 
@@ -106,7 +124,7 @@ export class AppRoutingModule { }
 
 ```
 
-8. Open `app.component.html` and add
+9. Open `app.component.html` and add
 
 ```typescript
 <app-top-bar></app-top-bar>
@@ -116,7 +134,7 @@ export class AppRoutingModule { }
 </div>
 ```
 
-9. Open `app.component.css` and add
+10. Open `app.component.css` and add
 
 ```css
 p {
@@ -124,7 +142,7 @@ p {
 }
 ```
 
-10. Open `styles.css` and add
+11. Open `styles.css` and add
 
 ```css
 /* Global Styles */
@@ -267,13 +285,13 @@ app-top-bar h1 {
 }
 ```
 
-11. Add `top-bar` component
+12. Add `top-bar` component
 
 ```
 ng g c top-bar
 ```
 
-11. Open `top-bar.component.html` and add
+13. Open `top-bar.component.html` and add
 
 ```typescript
 <a [routerLink]="['/']">
