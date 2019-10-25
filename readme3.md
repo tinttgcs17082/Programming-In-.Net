@@ -300,3 +300,15 @@ ng g c top-bar
 
 <a [routerLink]="['/cart']" class="button fancy-button"><i class="material-icons">shopping_cart</i>Checkout</a>
 ```
+
+14. Open `product-list.component.html` and add
+
+```html
+<h2>Products</h2>
+
+<div *ngFor="let product of products">
+    <h3>
+        {{ product.name }}
+    </h3>
+</div>
+```
