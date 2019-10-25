@@ -71,3 +71,15 @@ export class ProductListComponent implements OnInit {
 }
 
 ```
+
+6. Open `product-list.component.html` and add
+
+```html
+<h2>Products</h2>
+
+<div *ngFor="let product of products">
+    <h3>
+        {{ product.name }}
+    </h3>
+</div>
+```
