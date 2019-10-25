@@ -11,7 +11,7 @@ Take node
 ```
 npm install -g @angular/cli
 ng new my-first-app
-cd new my-first-app
+cd my-first-app
 
 ng serve
 ```
@@ -92,7 +92,12 @@ export class ProductListComponent implements OnInit {
   ngOnInit() {
   }
 
+  share() {
+    window.alert('The product has been shared!');
+  }
+
 }
+
 
 ```
 
