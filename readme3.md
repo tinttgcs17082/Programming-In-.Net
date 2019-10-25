@@ -375,3 +375,66 @@ ng g c top-bar
 
 </div>
 ```
+
+18. Add `product-alerts` component
+
+```
+ng g c product-alerts
+```
+
+19. Open `product-alerts.component.ts` and add
+
+```typescript
+import { Component, OnInit, Input } from '@angular/core';
+
+@Component({
+  selector: 'app-product-alerts',
+  templateUrl: './product-alerts.component.html',
+  styleUrls: ['./product-alerts.component.css']
+})
+export class ProductAlertsComponent implements OnInit {
+
+  @Input() product;
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+```
+
+20. Open `product-alerts.component.html` and add
+
+```html
+<p *ngIf="product.price > 700">
+  <button>Notify Me</button>
+</p>
+```
+
+21. Open `product-list.component.html` and add
+
+```html
+<h2>Products</h2>
+
+<div *ngFor="let product of products">
+
+  <h3>
+    <a [title]="product.name + ' details'">
+      {{ product.name }}
+    </a>
+  </h3>
+
+  <p *ngIf="product.description">
+    Description: {{ product.description }}
+  </p>
+
+  <button (click)="share()">
+    Share
+  </button>
+
+  <app-product-alerts [product]="product">
+  </app-product-alerts>
+
+</div>
+```
