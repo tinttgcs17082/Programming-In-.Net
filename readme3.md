@@ -83,3 +83,32 @@ export class ProductListComponent implements OnInit {
     </h3>
 </div>
 ```
+
+7. Config router
+
+Open `app-routing.module.ts`, add the following code 
+
+```typescript
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { ProductListComponent } from './product-list/product-list.component';
+
+
+const routes: Routes = [
+  { path: '', component: ProductListComponent },
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+
+```
+
+8. Add `top-bar` component
+
+```
+ng g c top-bar
+```
+
