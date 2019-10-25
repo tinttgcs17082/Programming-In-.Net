@@ -106,9 +106,36 @@ export class AppRoutingModule { }
 
 ```
 
-8. Add `top-bar` component
+8. Open `app.component.html` and add
+
+```typescript
+<app-top-bar></app-top-bar>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+```
+
+9. Open `app.component.css` and add
+
+```css
+p {
+  font-family: Lato;
+}
+```
+
+10. Add `top-bar` component
 
 ```
 ng g c top-bar
 ```
 
+11. Open `top-bar.component.html` and add
+
+```typescript
+<a [routerLink]="['/']">
+  <h1>My Store</h1>
+</a>
+
+<a [routerLink]="['/cart']" class="button fancy-button"><i class="material-icons">shopping_cart</i>Checkout</a>
+```
