@@ -438,3 +438,108 @@ export class ProductAlertsComponent implements OnInit {
 
 </div>
 ```
+
+22. Open `product-alerts.component.ts` and add
+
+```typescript
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
+@Component({
+  selector: 'app-product-alerts',
+  templateUrl: './product-alerts.component.html',
+  styleUrls: ['./product-alerts.component.css']
+})
+export class ProductAlertsComponent implements OnInit {
+
+  @Input() product;
+  @Output() notify = new EventEmitter();
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+```
+
+23. Open `product-alerts.component.html` and add
+
+```html
+<p *ngIf="product.price > 700">
+  <button (click)="notify.emit()">Notify Me</button>
+</p>
+```
+
+24. Open `product-list.component.ts` and add
+
+```typescript
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-product-list',
+  templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.css']
+})
+export class ProductListComponent implements OnInit {
+
+  products = [
+    {
+      name: 'Phone XL',
+      price: 799,
+      description: 'A large phone with one of the best screens'
+    },
+    {
+      name: 'Phone Mini',
+      price: 699,
+      description: 'A great phone with one of the best cameras'
+    },
+    {
+      name: 'Phone Standard',
+      price: 299,
+      description: ''
+    }
+  ];
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+  share() {
+    window.alert('The product has been shared!');
+  }
+
+  onNotify() {
+    window.alert('You will be notified when the product goes on sale');
+  }
+
+}
+
+```
+
+25. Open `product-list.component.html` and add
+
+```html
+<h2>Products</h2>
+
+<div *ngFor="let product of products">
+
+  <h3>
+    <a [title]="product.name + ' details'">
+      {{ product.name }}
+    </a>
+  </h3>
+
+  <p *ngIf="product.description">
+    Description: {{ product.description }}
+  </p>
+
+  <button (click)="share()">
+    Share
+  </button>
+
+  <app-product-alerts [product]="product" (notify)="onNotify()">
+  </app-product-alerts>
+
+</div>
+```
