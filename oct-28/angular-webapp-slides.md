@@ -32,13 +32,17 @@ A Single Page Application for tracking vehicle
 
 ---
 
-## NodeJS Installation
+## Installation: NodeJS, Angular CLI
+
+---
+
+### NodeJS Installation
 
 ![bg 70%](images/nodejs.png)
 
 ---
 
-## NodeJS Version Checking
+### NodeJS Version Checking
 
 Checking `node`'s version and `npm`'s version
 
@@ -52,7 +56,7 @@ $ npm -v
 
 ---
 
-## Angular CLI
+### Angular CLI
 
 ![bg 70%](images/angularcli.png)
 
@@ -80,13 +84,13 @@ Terminate the website by typing `Ctrl + C`
 
 ---
 
-## The Webapp Interface
+### The Webapp Interface
 
 ![bg 70%](images/ngserve.png)
 
 ---
 
-## Build the Webapp for Production
+### Build the Webapp for Production
 
 ```bash
 ng build --prod
@@ -98,7 +102,11 @@ When it is done, the production files are generated in folder `dist`
 
 ---
 
-## Create Docker Image of the Webapp
+## Containerization the project
+
+---
+
+### Create Docker Image of the Webapp
 
 We create an image of the webapp by composing `Dockerfile`. 
 Create an `Dockerfile` by the command
@@ -106,10 +114,9 @@ Create an `Dockerfile` by the command
 ```bash
 $ touch Dockerfile
 ```
-
 ---
 
-## What systems will run on the container?
+### What systems will run on the container?
 
 The Webapp
 
@@ -121,7 +128,7 @@ Nginx
 
 ---
 
-## Add code to Dockerfile
+### Add code to Dockerfile
 
 ```docker
 # base image
@@ -150,7 +157,7 @@ CMD ["nginx", "-g", "daemon off;"]
 
 ---
 
-## Another required files: `nginx.conf.j2`
+### Another required files: `nginx.conf.j2`
 
 ```bash
 $ touch nginx.conf.j2
@@ -198,7 +205,7 @@ http {
 
 --- 
 
-## Another required files: `docker-entrypoint.sh`
+### Another required files: `docker-entrypoint.sh`
 
 Add `docker-entrypoint.sh` with the following content 
 
@@ -206,5 +213,32 @@ Add `docker-entrypoint.sh` with the following content
 #!/bin/bash -e
 j2 /templates/nginx.conf.j2 > /etc/nginx/nginx.conf
 exec "$@"
+```
+
+---
+
+### Build the image
+
+```bash
+$ docker build -t angular-webapp:1.0 .
+```
+
+---
+
+### Start the container
+
+```bash
+$ docker container run --rm --name angular-webapp -d -p 8080:80 angular-webapp:1.0
+```
+
+Open your browser with `http://localhost:8080`
+
+
+---
+
+### Stop and Remove the container
+
+```bash
+$ docker container rm -f angular-webapp
 ```
 
