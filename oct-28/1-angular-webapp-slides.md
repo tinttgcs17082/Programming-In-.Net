@@ -4,7 +4,7 @@ marp: true
 
 # Angular Webapp
 
-A Single Page Application for tracking vehicle
+A Single Page Application (SPA) for tracking vehicle
 
 ---
 
